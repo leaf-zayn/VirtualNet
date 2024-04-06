@@ -54,100 +54,93 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
   {
-    path: '/example',
+    path: '/ddos',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/ddos/principle',
+    name: 'ddos',
+    meta: { title: 'DDoS', icon: 'DDoS' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/ddos/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/ddos/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
       }
     ]
   },
-
   {
-    path: '/form',
+    path: '/mitm',
+    component: Layout,
+    redirect: '/mitm/principle',
+    name: 'mitm',
+    meta: { title: 'MitM', icon: 'mitm' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/mitm/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/mitm/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      }
+    ]
+  },
+  {
+    path: '/dhcp',
+    component: Layout,
+    redirect: '/dhcp/principle',
+    name: 'dhcp',
+    meta: { title: 'DHCP Snooping', icon: 'DHCP' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/dhcp/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/dhcp/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      }
+    ]
+  },
+/*   {
+    path: '/ddos',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'ddos',
+        component: () => import('@/views/ddos/index'),
+        meta: { title: 'DDoS', icon: 'DDos' }
       }
     ]
-  },
-
-  {
-    path: '/nested',
+  }, */
+/*   {
+    path: '/mitm',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'index',
+        name: 'mitm',
+        component: () => import('@/views/mitm/index'),
+        meta: { title: 'MitM', icon: 'form' }
       }
     ]
-  },
+  }, */
 
   {
     path: 'external-link',
