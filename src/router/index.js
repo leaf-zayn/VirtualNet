@@ -101,7 +101,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/dhcp/principle',
     name: 'dhcp',
-    meta: { title: 'DHCP Snooping', icon: 'DHCP' },
+    meta: { title: 'DHCP fraud', icon: 'DHCP' },
     children: [
       {
         path: 'principle',
@@ -117,30 +117,30 @@ export const constantRoutes = [
       }
     ]
   },
-/*   {
-    path: '/ddos',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'ddos',
-        component: () => import('@/views/ddos/index'),
-        meta: { title: 'DDoS', icon: 'DDos' }
-      }
-    ]
-  }, */
-/*   {
-    path: '/mitm',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'mitm',
-        component: () => import('@/views/mitm/index'),
-        meta: { title: 'MitM', icon: 'form' }
-      }
-    ]
-  }, */
+  /*   {
+      path: '/ddos',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          name: 'ddos',
+          component: () => import('@/views/ddos/index'),
+          meta: { title: 'DDoS', icon: 'DDos' }
+        }
+      ]
+    }, */
+  /*   {
+      path: '/mitm',
+      component: Layout,
+      children: [
+        {
+          path: 'index',
+          name: 'mitm',
+          component: () => import('@/views/mitm/index'),
+          meta: { title: 'MitM', icon: 'form' }
+        }
+      ]
+    }, */
 
   {
     path: 'external-link',

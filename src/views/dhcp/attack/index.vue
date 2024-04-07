@@ -1,88 +1,98 @@
 <template>
-  <el-container>
-    <!-- 网络拓扑图 -->
-    <el-card class="topology-card">
-      <div slot="header" class="clearfix">
-        <span>网络拓扑图</span>
-      </div>
-      <img src="网络拓扑图链接" alt="网络拓扑图" style="width: 100%;">
-    </el-card>
-
-    <!-- 实验操作 -->
-    <el-row :gutter="20" class="operation-section">
-      <el-col :span="12">
-        <el-card class="operation-card">
-          <el-button type="danger" @click="performAttack">模拟DHCP攻击</el-button>
-          <el-button type="success" @click="applyDefense">应用防御</el-button>
-        </el-card>
-      </el-col>
-    </el-row>
-
-    <!-- 实验结果 -->
-    <el-row :gutter="20">
+  <div class="dhcp-hijack">
+    <!-- 网络拓扑图展示 -->
+    <el-row :gutter="20" class="topology-row">
       <el-col :span="24">
-        <el-card v-if="experimentResult" class="result-card">
-          <div slot="header" class="clearfix">
-            <span>实验结果</span>
-          </div>
-          <p>{{ experimentResult }}</p>
+        <el-card>
+          <div slot="header">网络拓扑图</div>
+          <img src="@/assets/NetworkTopology/dhcp.png" alt="网络拓扑图" style="width: 100%;">
         </el-card>
       </el-col>
     </el-row>
 
-    <!-- 网络配置弹窗 -->
-    <el-dialog :visible.sync="showConfigDialog" title="网络配置详情" width="50%">
-      <pre>{{ currentConfig }}</pre>
+    <!-- 实验操作和实验结果并排对齐 -->
+    <div class="operation-and-result-row">
+      <el-row>
+        <!-- 实验操作 -->
+        <el-col :span="12">
+          <el-card>
+            <div slot="header">实验操作</div>
+            <el-button type="danger" @click="simulateAttack">模拟DHCP劫持攻击</el-button>
+            <el-button type="success" @click="applyDefense">应用防御措施</el-button>
+          </el-card>
+        </el-col>
+
+        <!-- 实验结果 -->
+        <el-col :span="12">
+          <el-card>
+            <div slot="header" class="result">实验结果</div>
+            <el-input
+              type="textarea"
+              :rows="3"
+              v-model="experimentResult"
+              placeholder="实验结果将显示在这里..."
+              readonly>
+            </el-input>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+
+    <!-- 配置详情弹窗 -->
+    <el-dialog :visible.sync="configDialogVisible" title="配置详情" width="60%">
+      <pre>{{ configDetails }}</pre>
     </el-dialog>
-  </el-container>
+  </div>
 </template>
 
 <script>
+import {Attack,Defense} from "@/config/dhcp";
 export default {
+  name: 'DHCPSimulation',
   data() {
     return {
-      showConfigDialog: false,
-      currentConfig: '',
       experimentResult: '',
+      configDialogVisible: false,
+      configDetails: '',
     };
   },
   methods: {
-    performAttack() {
-      this.currentConfig = `# DHCP攻击时的网络配置
-设备: Switch
-配置: IP DHCP Snooping未启用`;
-      this.experimentResult = '试验机的IP地址被恶意更改为192.168.1.100';
-      this.showConfigDialog = true;
+    simulateAttack() {
+      this.experimentResult = Attack.experimentResult;
+      this.configDetails = Attack.configDetails;
+      this.configDialogVisible = true;
     },
     applyDefense() {
-      this.currentConfig = `# 应用防御后的网络配置
-设备: Switch
-配置: IP DHCP Snooping已启用，确保只有可信的DHCP服务器可以响应`;
-      this.experimentResult = '试验机获得了正确的IP地址，网络通信正常';
-      this.showConfigDialog = true;
-    }
-  }
+      this.experimentResult = Defense.experimentResult;
+      this.configDetails = Defense.configDetails;
+      this.configDialogVisible = true;
+    },
+  },
 };
 </script>
 
 <style scoped>
-.topology-card, .operation-card, .result-card {
-  margin-bottom: 20px;
+
+.topology-row img {
+  max-height: 450px;
+  object-fit: contain;
 }
 
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
+.operation-and-result-row .el-row {
+  display: flex;
+  justify-content: space-between;
+}
+.operation-and-result-row .el-col:first-child {
+  flex: 0 0 30%; /* 将第一个col设置为占据37%的宽度 */
 }
 
-.operation-section .el-col {
-  text-align: center;
+.operation-and-result-row .el-col:last-child {
+  flex-grow: 1; /* 剩余空间由第二个col填满 */
 }
 
-pre {
-  background-color: #f5f5f5;
-  padding: 15px;
-  overflow: auto;
+/* 确保卡片在大屏幕上并排显示，各占一半宽度 */
+.operation-and-result-row .el-col {
+  flex: 1;
 }
+
 </style>
