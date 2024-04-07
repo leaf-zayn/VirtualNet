@@ -97,11 +97,32 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/stp',
+    component: Layout,
+    redirect: '/stp/principle',
+    name: 'stp',
+    meta: { title: 'STP Spoofing', icon: 'tree' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/stp/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/stp/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      }
+    ]
+  },
+  {
     path: '/dhcp',
     component: Layout,
     redirect: '/dhcp/principle',
     name: 'dhcp',
-    meta: { title: 'DHCP fraud', icon: 'DHCP' },
+    meta: { title: 'DHCP Spoofing', icon: 'DHCP' },
     children: [
       {
         path: 'principle',
