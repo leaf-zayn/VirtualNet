@@ -114,6 +114,12 @@ export const constantRoutes = [
         name: 'Attack',
         component: () => import('@/views/stp/attack/index'),
         meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/stp/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
       }
     ]
   },
@@ -135,6 +141,12 @@ export const constantRoutes = [
         name: 'Attack',
         component: () => import('@/views/dhcp/attack/index'),
         meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/stp/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
       }
     ]
   },
