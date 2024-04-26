@@ -72,6 +72,12 @@ export const constantRoutes = [
         name: 'Attack',
         component: () => import('@/views/ddos/attack/index'),
         meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/ddos/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
       }
     ]
   },
@@ -145,7 +151,7 @@ export const constantRoutes = [
       {
         path: 'lab',
         name: 'Lab',
-        component: () => import('@/views/stp/lab/index'),
+        component: () => import('@/views/dhcp/lab/index'),
         meta: { title: 'Lab', icon: 'attack' }
       }
     ]
@@ -180,7 +186,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'http://60.204.156.106:3080/',
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
