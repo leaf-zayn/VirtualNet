@@ -156,18 +156,115 @@ export const constantRoutes = [
       }
     ]
   },
-  /*   {
-      path: '/ddos',
-      component: Layout,
-      children: [
-        {
-          path: 'index',
-          name: 'ddos',
-          component: () => import('@/views/ddos/index'),
-          meta: { title: 'DDoS', icon: 'DDos' }
-        }
-      ]
-    }, */
+  //todo 删
+  {
+    path: '/rat',
+    component: Layout,
+    redirect: '/rat/principle',
+    name: 'rat',
+    meta: { title: 'RAT', icon: 'DHCP' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/rat/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/rat/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/rat/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
+      }
+    ]
+  },
+  {
+    path: '/phishing',
+    component: Layout,
+    redirect: '/phishing/principle',
+    name: 'phishing',
+    meta: { title: 'Phishing', icon: 'DHCP' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/phishing/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/phishing/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/phishing/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
+      }
+    ]
+  },
+  {
+    path: '/eternalblue',
+    component: Layout,
+    redirect: '/eternalblue/principle',
+    name: 'eternalblue',
+    meta: { title: 'EternalBlue', icon: 'DHCP' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/eternalblue/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/eternalblue/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/eternalblue/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
+      }
+    ]
+  },
+  {
+    path: '/botnet',
+    component: Layout,
+    redirect: '/botnet/principle',
+    name: 'botnet',
+    meta: { title: 'Botnet', icon: 'DHCP' },
+    children: [
+      {
+        path: 'principle',
+        name: 'Principle',
+        component: () => import('@/views/botnet/principle/index'),
+        meta: { title: 'Principle', icon: 'table' }
+      },
+      {
+        path: 'attack',
+        name: 'Attack',
+        component: () => import('@/views/botnet/attack/index'),
+        meta: { title: 'Attack', icon: 'attack' }
+      },
+      {
+        path: 'lab',
+        name: 'Lab',
+        component: () => import('@/views/botnet/lab/index'),
+        meta: { title: 'Lab', icon: 'attack' }
+      }
+    ]
+  },
   /*   {
       path: '/mitm',
       component: Layout,
