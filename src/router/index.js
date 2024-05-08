@@ -77,7 +77,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/ddos/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },
@@ -98,7 +98,7 @@ export const constantRoutes = [
         path: 'attack',
         name: 'Attack',
         component: () => import('@/views/mitm/attack/index'),
-        meta: { title: 'Attack', icon: 'attack' }
+        meta: { title: 'Attack', icon: 'lab' }
       }
     ]
   },
@@ -125,7 +125,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/stp/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },
@@ -152,7 +152,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/dhcp/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },
@@ -162,7 +162,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/rat/principle',
     name: 'rat',
-    meta: { title: 'RAT', icon: 'DHCP' },
+    meta: { title: 'RAT', icon: 'rat' },
     children: [
       {
         path: 'principle',
@@ -180,7 +180,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/rat/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },
@@ -189,7 +189,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/phishing/principle',
     name: 'phishing',
-    meta: { title: 'Phishing', icon: 'DHCP' },
+    meta: { title: 'Phishing', icon: 'fish' },
     children: [
       {
         path: 'principle',
@@ -207,7 +207,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/phishing/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },
@@ -216,7 +216,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/eternalblue/principle',
     name: 'eternalblue',
-    meta: { title: 'EternalBlue', icon: 'DHCP' },
+    meta: { title: 'EternalBlue', icon: 'blue' },
     children: [
       {
         path: 'principle',
@@ -234,7 +234,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/eternalblue/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },
@@ -243,7 +243,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/botnet/principle',
     name: 'botnet',
-    meta: { title: 'Botnet', icon: 'DHCP' },
+    meta: { title: 'Botnet', icon: 'botnet' },
     children: [
       {
         path: 'principle',
@@ -261,7 +261,7 @@ export const constantRoutes = [
         path: 'lab',
         name: 'Lab',
         component: () => import('@/views/botnet/lab/index'),
-        meta: { title: 'Lab', icon: 'attack' }
+        meta: { title: 'Lab', icon: 'lab' }
       }
     ]
   },

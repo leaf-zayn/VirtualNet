@@ -1,100 +1,81 @@
 <template>
-  <div class="ddos-attack">
-    <el-row :gutter="20">
-      <el-col :span="12">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>DDoS Attack Simulation</span>
-          </div>
-          <el-form ref="form" :model="form" label-width="120px">
-            <el-form-item label="Target IP">
-              <el-input v-model="form.targetIP"></el-input>
-            </el-form-item>
-            <el-form-item label="Attack Type">
-              <el-select v-model="form.attackType" placeholder="Select attack type">
-                <el-option label="TCP SYN Flood" value="tcp_syn_flood"></el-option>
-                <el-option label="UDP Flood" value="udp_flood"></el-option>
-                <el-option label="HTTP GET Flood" value="http_get_flood"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item label="Duration (s)">
-              <el-input-number v-model="form.duration" :min="10" :max="120"></el-input-number>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" @click="startAttack">Start Attack</el-button>
-              <el-button @click="resetForm">Reset</el-button>
-            </el-form-item>
-          </el-form>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>GNS3 Web-UI</span>
-          </div>
-          <iframe
-            src="https://zayn-1319476987.cos.ap-shanghai.myqcloud.com/5c22225a99643ab7851a650d26f0e176.JPG"
-            width="100%"
-            height="300px"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
+  <div class="dhcp-hijack">
+    <!-- 网络拓扑图展示 -->
+    <el-row :gutter="20" class="topology-row">
       <el-col :span="24">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>Attack Results</span>
-          </div>
-          <el-input
-            type="textarea"
-            v-model="attackResult"
-            :rows="6"
-            placeholder="Attack results will be displayed here..."
-            readonly>
-          </el-input>
+        <el-card>
+          <div slot="header">网络拓扑图</div>
+          <img src="@/assets/NetworkTopology/eternalblue.png" alt="网络拓扑图" style="width: 100%;">
         </el-card>
       </el-col>
     </el-row>
+
+    <!-- 实验操作和实验结果并排对齐 -->
+    <div class="operation-and-result-row">
+      <el-row>
+        <!-- 实验操作 -->
+        <el-col :span="12">
+          <el-card>
+            <div slot="header">攻击</div>
+            <el-button type="primary" @click="simulateAttack">漏洞扫描</el-button>
+            <el-button type="primary" @click="simulateAttack">密码破解</el-button>
+            <el-button type="primary" @click="applyDefense">网络嗅探</el-button>
+            <el-button type="primary" @click="applyDefense">远程命令执行</el-button>
+          </el-card>
+        </el-col>
+
+        <!-- 实验结果 -->
+        <el-col :span="12">
+          <el-card>
+            <div slot="header">检测</div>
+            <el-button type="info" @click="simulateAttack">签名检测</el-button>
+            <el-button type="info" @click="simulateAttack">内容匹配</el-button>
+            <el-button type="info" @click="applyDefense">协议分析</el-button>
+            <el-button type="info" @click="applyDefense">异常流量检测</el-button>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
+
+    <!-- 配置详情弹窗 -->
+    <el-dialog :visible.sync="configDialogVisible" title="配置详情" width="60%">
+      <pre>{{ configDetails }}</pre>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import {Attack,Defense} from "@/config/dhcp";
 export default {
-  name: 'DDoSAttack',
+  name: 'DHCPSimulation',
   data() {
     return {
-      form: {
-        targetIP: '',
-        attackType: '',
-        duration: 30,
-      },
-      attackResult: '',
+      experimentResult: '',
+      configDialogVisible: false,
+      configDetails: '',
     };
   },
   methods: {
-    startAttack() {
-      // Implement the logic to start the attack
-      console.log('Starting attack with:', this.form);
-      // For demonstration purposes, we'll just simulate an attack result
-      this.attackResult = `Attack on ${this.form.targetIP} using ${this.form.attackType} for ${this.form.duration} seconds was successful.`;
+    simulateAttack() {
+      this.experimentResult = Attack.experimentResult;
+      this.configDetails = Attack.configDetails;
+      this.configDialogVisible = true;
     },
-    resetForm() {
-      this.$refs.form.resetFields();
-      this.attackResult = '';
+    applyDefense() {
+      this.experimentResult = Defense.experimentResult;
+      this.configDetails = Defense.configDetails;
+      this.configDialogVisible = true;
     },
   },
 };
 </script>
 
 <style scoped>
-.ddos-attack {
-  max-width: 1200px;
-  margin: 50px auto;
+
+.topology-row img {
+  max-height: 450px;
+  object-fit: contain;
 }
-.box-card {
-  margin-bottom: 20px;
-}
+
+
 </style>
