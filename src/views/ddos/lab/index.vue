@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       // 这里替换为你的 GNS3 WebUI 实际链接
-      gns3WebUILink: 'http://60.204.156.106:3080/'
+      gns3WebUILink: 'http://10.20.7.103:8080/vnc.html'
     };
   }
 }
@@ -23,3 +23,4 @@ export default {
   border: none; /* 移除边框 */
 }
 </style>
+

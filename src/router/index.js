@@ -78,6 +78,12 @@ export const constantRoutes = [
         name: 'Lab',
         component: () => import('@/views/ddos/lab/index'),
         meta: { title: 'Lab', icon: 'lab' }
+      },
+      {
+        path: 'visualization',
+        name: 'visualization',
+        component: () => import('@/views/ddos/visualization/index'),
+        meta: { title: 'Visualization', icon: 'visual' }
       }
     ]
   },

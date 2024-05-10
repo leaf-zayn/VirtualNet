@@ -14,7 +14,7 @@
               <el-select v-model="form.attackType" placeholder="Select attack type">
                 <el-option label="TCP SYN Flood" value="tcp_syn_flood"></el-option>
                 <el-option label="UDP Flood" value="udp_flood"></el-option>
-                <el-option label="HTTP GET Flood" value="http_get_flood"></el-option>
+                <el-option label="ARP" value="arp_flood"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="Duration (s)">
@@ -30,15 +30,8 @@
       <el-col :span="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>GNS3 Web-UI</span>
+            <img src="@/assets/NetworkTopology/ensp.png" alt="网络拓扑图" style="width: 100%;">
           </div>
-          <iframe
-            src="https://zayn-1319476987.cos.ap-shanghai.myqcloud.com/5c22225a99643ab7851a650d26f0e176.JPG"
-            width="100%"
-            height="300px"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
         </el-card>
       </el-col>
     </el-row>
